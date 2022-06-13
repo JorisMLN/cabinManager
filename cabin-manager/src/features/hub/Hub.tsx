@@ -2,6 +2,7 @@ import Watering from "../watering/Watering";
 import Camera from "../camera/Camera";
 import Alarm from "../alarm/Alarm";
 import Portal from "../portal/Portal";
+import Lights from "../lights/Lights";
 
 const Hub = () => {
 
@@ -11,6 +12,7 @@ const Hub = () => {
       <Camera />
       <Alarm />
       <Portal />
+      <Lights />
     </div>
   );
 }
