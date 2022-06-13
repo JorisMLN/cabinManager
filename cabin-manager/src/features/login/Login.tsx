@@ -67,7 +67,7 @@ const Login = () => {
           <TbArrowBigDownLines size={20}/>
         </div>
         <div className="login__bloc">
-          <SiHomebridge size={150} color='blue'/>
+          <SiHomebridge size={150} color='#4db6ac'/>
           <div>
             <fieldset>
               <legend>Login</legend>
@@ -81,14 +81,14 @@ const Login = () => {
             </fieldset>
           </div>
           <Button
-            sx={{ color: '#1c3761', backgroundColor: '#81D4FA' }}
+            sx={{ color: 'white', backgroundColor: '#0288d1' }}
             className="login__bloc--btn"
             variant="contained"
             onClick={() => submit()}>
             Valider
           </Button>
         </div>
-        <div className="login__bot"> Version {packageJson.version} </div>
+        <div className="login__bot"> v {packageJson.version} </div>
       </div>
 
       <Snackbar 
