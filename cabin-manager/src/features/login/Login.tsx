@@ -6,6 +6,10 @@ import Snackbar from '@mui/material/Snackbar';
 
 import { useNavigate } from "react-router-dom";
 
+import { MdFingerprint } from 'react-icons/md';
+import { TbArrowBigDownLines } from 'react-icons/tb';
+import { SiHomebridge } from 'react-icons/si';
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -58,9 +62,12 @@ const Login = () => {
   return (
     <>
       <div className="login">
-        <div className="login__top">-----</div>
+        <div className="login__top">
+          <MdFingerprint size={30}/>
+          <TbArrowBigDownLines size={20}/>
+        </div>
         <div className="login__bloc">
-          {/* <img alt="ellona logo" src={logoLogin}></img> */}
+          <SiHomebridge size={150} color='blue'/>
           <div>
             <fieldset>
               <legend>Login</legend>
