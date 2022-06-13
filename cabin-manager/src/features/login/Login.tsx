@@ -1,0 +1,99 @@
+import './login.scss'
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import packageJson from '../../../package.json';
+import Snackbar from '@mui/material/Snackbar';
+
+import { useNavigate } from "react-router-dom";
+
+
+const Login = () => {
+  const navigate = useNavigate();
+
+  //For the SnackBar
+  const [openSnack, setOpenSnack] = React.useState<boolean>(false);
+  const handleCloseSnack = () => {
+    setOpenSnack(false);
+  };
+
+  function submit() {
+    let loginValue: string = (document.getElementById('login') as HTMLInputElement).value;
+    let passwordValue: string = (document.getElementById('password') as HTMLInputElement).value;
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        login: loginValue,
+        password: passwordValue
+      })
+    };
+
+    const isLogingForToken = async () => {
+      try {
+        const response = await fetch('URL', requestOptions);
+        const jsonRes = await response.json();
+        console.log(jsonRes.token);
+
+        if (jsonRes.token === undefined) {
+          console.log('refused');
+          setOpenSnack(true);
+        } else {
+          localStorage.setItem("TOKEN", JSON.stringify(jsonRes.token));
+          navigate('/sites');
+        }
+      } catch {
+        console.error();
+        return [];
+      }
+    }
+    isLogingForToken();
+  }
+
+
+
+  return (
+    <>
+      <div className="login">
+        <div className="login__top">-----</div>
+        <div className="login__bloc">
+          {/* <img alt="ellona logo" src={logoLogin}></img> */}
+          <div>
+            <fieldset>
+              <legend>Login</legend>
+              <input id="login" type="text" required />
+              <br />
+            </fieldset>
+            <fieldset>
+              <legend>Mot de passe</legend>
+              <input id="password" type="password" required />
+              <br />
+            </fieldset>
+          </div>
+          <Button
+            sx={{ color: '#1c3761', backgroundColor: '#81D4FA' }}
+            className="login__bloc--btn"
+            variant="contained"
+            onClick={() => submit()}>
+            Valider
+          </Button>
+        </div>
+        <div className="login__bot"> Version {packageJson.version} </div>
+      </div>
+
+      <Snackbar 
+        className='alertLogin'
+        open={openSnack} 
+        autoHideDuration={6000} 
+        onClose={handleCloseSnack}
+        message="refused!"
+      />
+    </>
+
+  );
+}
+
+export default Login;
