@@ -1,3 +1,4 @@
+import './whaf.scss'
 
 const Footer = () => {
 

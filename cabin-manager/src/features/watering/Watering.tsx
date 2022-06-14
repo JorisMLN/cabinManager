@@ -1,8 +1,8 @@
-const Watering = () => {
+const Watering = (props: any) => {
 
   return (
     <div className="watering">
-      <div>Water</div>
+      <div>Water{props.name}</div>
     </div>
   );
 }

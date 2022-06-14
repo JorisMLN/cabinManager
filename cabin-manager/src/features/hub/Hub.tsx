@@ -8,7 +8,7 @@ const Hub = () => {
 
   return (
     <div className="hub">
-      <Watering />
+      <Watering name='testProps'/>
       <Camera />
       <Alarm />
       <Portal />

@@ -21,38 +21,39 @@ const Login = () => {
   };
 
   function submit() {
-    let loginValue: string = (document.getElementById('login') as HTMLInputElement).value;
-    let passwordValue: string = (document.getElementById('password') as HTMLInputElement).value;
+    // let loginValue: string = (document.getElementById('login') as HTMLInputElement).value;
+    // let passwordValue: string = (document.getElementById('password') as HTMLInputElement).value;
 
-    const requestOptions = {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        login: loginValue,
-        password: passwordValue
-      })
-    };
+    // const requestOptions = {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json, text/plain, */*',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     login: loginValue,
+    //     password: passwordValue
+    //   })
+    // };
 
     const isLogingForToken = async () => {
-      try {
-        const response = await fetch('URL', requestOptions);
-        const jsonRes = await response.json();
-        console.log(jsonRes.token);
+      navigate('/hub');
+    //   try {
+    //     const response = await fetch('URL', requestOptions);
+    //     const jsonRes = await response.json();
+    //     console.log(jsonRes.token);
 
-        if (jsonRes.token === undefined) {
-          console.log('refused');
-          setOpenSnack(true);
-        } else {
-          localStorage.setItem("TOKEN", JSON.stringify(jsonRes.token));
-          navigate('/sites');
-        }
-      } catch {
-        console.error();
-        return [];
-      }
+    //     if (jsonRes.token === undefined) {
+    //       console.log('refused');
+    //       setOpenSnack(true);
+    //     } else {
+    //       localStorage.setItem("TOKEN", JSON.stringify(jsonRes.token));
+    //       navigate('/sites');
+    //     }
+    //   } catch {
+    //     console.error();
+    //     return [];
+    //   }
     }
     isLogingForToken();
   }
